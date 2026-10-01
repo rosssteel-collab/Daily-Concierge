@@ -180,6 +180,46 @@ const MONTHS = [
       { date: "Sun 4/10", D: [12,21], A: [9,18],  K: [14,23], H: null    },
     ]},
   ]},
+  {
+  label: "October 2026",
+  weeks: [
+    { label: "Week 1", dates: "5–11 Oct", days: [
+      { date: "Mon 5/10",  D: null,    A: [12,21], K: [14,23], H: null    },
+      { date: "Tue 6/10",  D: null,    A: null,    K: [14,23], H: [12,21] },
+      { date: "Wed 7/10",  D: [14,23], A: [14,23], K: null,    H: [12,21] },
+      { date: "Thu 8/10",  D: [14,23], A: [14,23], K: null,    H: [12,21] },
+      { date: "Fri 9/10",  D: [14,23], A: [12,21], K: [14,23], H: [12,21] },
+      { date: "Sat 10/10", D: [12,21], A: null,    K: [14,23], H: [9,18]  },
+      { date: "Sun 11/10", D: [12,21], A: [9,18],  K: [14,23], H: null    },
+    ]},
+    { label: "Week 2", dates: "12–18 Oct", days: [
+      { date: "Mon 12/10", D: [12,21], A: [14,23], K: null,    H: null    },
+      { date: "Tue 13/10", D: null,    A: [14,23], K: [12,21], H: null    },
+      { date: "Wed 14/10", D: [14,23], A: null,    K: [12,21], H: [14,23] },
+      { date: "Thu 15/10", D: [14,23], A: null,    K: [12,21], H: [14,23] },
+      { date: "Fri 16/10", D: [12,21], A: [14,23], K: [12,21], H: [14,23] },
+      { date: "Sat 17/10", D: null,    A: [14,23], K: [9,18],  H: [12,21] },
+      { date: "Sun 18/10", D: [9,18],  A: [14,23], K: null,    H: [12,21] },
+    ]},
+    { label: "Week 3", dates: "19–25 Oct", days: [
+      { date: "Mon 19/10", D: [14,23], A: null,    K: null,    H: [12,21] },
+      { date: "Tue 20/10", D: [14,23], A: [12,21], K: null,    H: null    },
+      { date: "Wed 21/10", D: null,    A: [12,21], K: [14,23], H: [14,23] },
+      { date: "Thu 22/10", D: null,    A: [12,21], K: [14,23], H: [14,23] },
+      { date: "Fri 23/10", D: [14,23], A: [12,21], K: [14,23], H: [12,21] },
+      { date: "Sat 24/10", D: [14,23], A: [9,18],  K: [12,21], H: null    },
+      { date: "Sun 25/10", D: [14,23], A: null,    K: [12,21], H: [9,18]  },
+    ]},
+    { label: "Week 4", dates: "26 Oct–1 Nov", days: [
+      { date: "Mon 26/10", D: null,    A: null,    K: [12,21], H: [14,23] },
+      { date: "Tue 27/10", D: [12,21], A: null,    K: null,    H: [14,23] },
+      { date: "Wed 28/10", D: [12,21], A: [14,23], K: [14,23], H: null    },
+      { date: "Thu 29/10", D: [12,21], A: [14,23], K: [14,23], H: null    },
+      { date: "Fri 30/10", D: [12,21], A: [14,23], K: [12,21], H: [14,23] },
+      { date: "Sat 31/10", D: [9,18],  A: [12,21], K: null,    H: [14,23] },
+      { date: "Sun 1/11",  D: null,    A: [12,21], K: [9,18],  H: [14,23] },
+    ]},
+  ]},
 ];
 
 // ── HOLIDAYS ─────────────────────────────────────────────────────────
@@ -195,6 +235,9 @@ const DEFAULT_HOLIDAYS = [
   { agent: "Sophia", from: "2026-09-17", to: "2026-09-18" },
   { agent: "Sophia", from: "2026-09-21", to: "2026-09-25" },
   { agent: "Ross", from: "2026-08-31", to: "2026-09-13" },
+  { agent: "Ross", from: "2026-10-08", to: "2026-10-09" },
+  { agent: "Sophia", from: "2026-10-16", to: "2026-10-16" },
+  { agent: "Sophia", from: "2026-10-23", to: "2026-10-23" },
 ];
 
 // Check if an agent is on holiday on a given date string (e.g. "Mon 15/6")
