@@ -220,6 +220,95 @@ const MONTHS = [
       { date: "Sun 1/11",  D: null,    A: [12,21], K: [9,18],  H: [14,23] },
     ]},
   ]},
+  {
+  label: "November 2026",
+  weeks: [
+    { label: "Week 1", dates: "2–8 Nov", days: [
+      { date: "Mon 2/11", D: null,    A: [12,21], K: [14,23], H: null    },
+      { date: "Tue 3/11", D: null,    A: null,    K: [14,23], H: [12,21] },
+      { date: "Wed 4/11", D: [14,23], A: [14,23], K: null,    H: [12,21] },
+      { date: "Thu 5/11", D: [14,23], A: [14,23], K: null,    H: [12,21] },
+      { date: "Fri 6/11", D: [14,23], A: [12,21], K: [14,23], H: [12,21] },
+      { date: "Sat 7/11", D: [12,21], A: null,    K: [14,23], H: [9,18]  },
+      { date: "Sun 8/11", D: [12,21], A: [9,18],  K: [14,23], H: null    },
+    ]},
+    { label: "Week 2", dates: "9–15 Nov", days: [
+      { date: "Mon 9/11",  D: [12,21], A: [14,23], K: null,    H: null    },
+      { date: "Tue 10/11", D: null,    A: [14,23], K: [12,21], H: null    },
+      { date: "Wed 11/11", D: [14,23], A: null,    K: [12,21], H: [14,23] },
+      { date: "Thu 12/11", D: [14,23], A: null,    K: [12,21], H: [14,23] },
+      { date: "Fri 13/11", D: [12,21], A: [14,23], K: [12,21], H: [14,23] },
+      { date: "Sat 14/11", D: null,    A: [14,23], K: [9,18],  H: [12,21] },
+      { date: "Sun 15/11", D: [9,18],  A: [14,23], K: null,    H: [12,21] },
+    ]},
+    { label: "Week 3", dates: "16–22 Nov", days: [
+      { date: "Mon 16/11", D: [14,23], A: null,    K: null,    H: [12,21] },
+      { date: "Tue 17/11", D: [14,23], A: [12,21], K: null,    H: null    },
+      { date: "Wed 18/11", D: null,    A: [12,21], K: [14,23], H: [14,23] },
+      { date: "Thu 19/11", D: null,    A: [12,21], K: [14,23], H: [14,23] },
+      { date: "Fri 20/11", D: [14,23], A: [12,21], K: [14,23], H: [12,21] },
+      { date: "Sat 21/11", D: [14,23], A: [9,18],  K: [12,21], H: null    },
+      { date: "Sun 22/11", D: [14,23], A: null,    K: [12,21], H: [9,18]  },
+    ]},
+    { label: "Week 4", dates: "23–29 Nov", days: [
+      { date: "Mon 23/11", D: null,    A: null,    K: [12,21], H: [14,23] },
+      { date: "Tue 24/11", D: [12,21], A: null,    K: null,    H: [14,23] },
+      { date: "Wed 25/11", D: [12,21], A: [14,23], K: [14,23], H: null    },
+      { date: "Thu 26/11", D: [12,21], A: [14,23], K: [14,23], H: null    },
+      { date: "Fri 27/11", D: [12,21], A: [14,23], K: [12,21], H: [14,23] },
+      { date: "Sat 28/11", D: [9,18],  A: [12,21], K: null,    H: [14,23] },
+      { date: "Sun 29/11", D: null,    A: [12,21], K: [9,18],  H: [14,23] },
+    ]},
+  ]},
+  {
+  label: "December 2026",
+  weeks: [
+    { label: "Week 1", dates: "30 Nov–6 Dec", days: [
+      { date: "Mon 30/11", D: null,    A: [12,21], K: [14,23], H: null    },
+      { date: "Tue 1/12",  D: null,    A: null,    K: [14,23], H: [12,21] },
+      { date: "Wed 2/12",  D: [14,23], A: [14,23], K: null,    H: [12,21] },
+      { date: "Thu 3/12",  D: [14,23], A: [14,23], K: null,    H: [12,21] },
+      { date: "Fri 4/12",  D: [14,23], A: [12,21], K: [14,23], H: [12,21] },
+      { date: "Sat 5/12",  D: [12,21], A: null,    K: [14,23], H: [9,18]  },
+      { date: "Sun 6/12",  D: [12,21], A: [9,18],  K: [14,23], H: null    },
+    ]},
+    { label: "Week 2", dates: "7–13 Dec", days: [
+      { date: "Mon 7/12",  D: [12,21], A: [14,23], K: null,    H: null    },
+      { date: "Tue 8/12",  D: null,    A: [14,23], K: [12,21], H: null    },
+      { date: "Wed 9/12",  D: [14,23], A: null,    K: [12,21], H: [14,23] },
+      { date: "Thu 10/12", D: [14,23], A: null,    K: [12,21], H: [14,23] },
+      { date: "Fri 11/12", D: [12,21], A: [14,23], K: [12,21], H: [14,23] },
+      { date: "Sat 12/12", D: null,    A: [14,23], K: [9,18],  H: [12,21] },
+      { date: "Sun 13/12", D: [9,18],  A: [14,23], K: null,    H: [12,21] },
+    ]},
+    { label: "Week 3", dates: "14–20 Dec", days: [
+      { date: "Mon 14/12", D: [14,23], A: null,    K: null,    H: [12,21] },
+      { date: "Tue 15/12", D: [14,23], A: [12,21], K: null,    H: null    },
+      { date: "Wed 16/12", D: null,    A: [12,21], K: [14,23], H: [14,23] },
+      { date: "Thu 17/12", D: null,    A: [12,21], K: [14,23], H: [14,23] },
+      { date: "Fri 18/12", D: [14,23], A: [12,21], K: [14,23], H: [12,21] },
+      { date: "Sat 19/12", D: [14,23], A: [9,18],  K: [12,21], H: null    },
+      { date: "Sun 20/12", D: [14,23], A: null,    K: [12,21], H: [9,18]  },
+    ]},
+    { label: "Week 4", dates: "21–27 Dec", days: [
+      { date: "Mon 21/12", D: null,    A: null,    K: [12,21], H: [14,23] },
+      { date: "Tue 22/12", D: [12,21], A: null,    K: null,    H: [14,23] },
+      { date: "Wed 23/12", D: [12,21], A: [14,23], K: [14,23], H: null    },
+      { date: "Thu 24/12", D: [12,21], A: [14,23], K: [14,23], H: null    },
+      { date: "Fri 25/12", D: [12,21], A: [14,23], K: [12,21], H: [14,23] },
+      { date: "Sat 26/12", D: [9,18],  A: [12,21], K: null,    H: [14,23] },
+      { date: "Sun 27/12", D: null,    A: [12,21], K: [9,18],  H: [14,23] },
+    ]},
+    { label: "Week 5", dates: "28 Dec–3 Jan", days: [
+      { date: "Mon 28/12", D: null,    A: [12,21], K: [14,23], H: null    },
+      { date: "Tue 29/12", D: null,    A: null,    K: [14,23], H: [12,21] },
+      { date: "Wed 30/12", D: [14,23], A: [14,23], K: null,    H: [12,21] },
+      { date: "Thu 31/12", D: [14,23], A: [14,23], K: null,    H: [12,21] },
+      { date: "Fri 1/1",   D: [14,23], A: [12,21], K: [14,23], H: [12,21] },
+      { date: "Sat 2/1",   D: [12,21], A: null,    K: [14,23], H: [9,18]  },
+      { date: "Sun 3/1",   D: [12,21], A: [9,18],  K: [14,23], H: null    },
+    ]},
+  ]},
 ];
 
 // ── HOLIDAYS ─────────────────────────────────────────────────────────
@@ -238,6 +327,7 @@ const DEFAULT_HOLIDAYS = [
   { agent: "Ross", from: "2026-10-08", to: "2026-10-09" },
   { agent: "Sophia", from: "2026-10-16", to: "2026-10-16" },
   { agent: "Sophia", from: "2026-10-23", to: "2026-10-23" },
+  { agent: "Ross", from: "2026-11-09", to: "2026-11-13" },
 ];
 
 // Check if an agent is on holiday on a given date string (e.g. "Mon 15/6")
