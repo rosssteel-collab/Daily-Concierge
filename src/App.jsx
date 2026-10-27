@@ -491,62 +491,39 @@ function avail2(agent, h2) {
 }
 
 function assignTasks(agents) {
-  // Build per-task block arrays
-  const taskBlocks = TASKS.map(() => []);
+  // "Sticky handover" ownership: whoever is on HubSpot keeps it for as long
+  // as they're available. Only when they go to lunch or finish their shift
+  // does it hand over to the next agent, rotating through everyone on shift
+  // (by shift-start order) so nobody is skipped — same spirit as the old
+  // HubSpot / Hub & CS Slack / Nash split, just applied to a single task.
+  const blocks = [];
+  let currentOwner = null;
+  let blockStart = null;
 
-  let h2 = S2;
-  while (h2 < E2) {
+  for (let h2 = S2; h2 < E2; h2++) {
+    const t = h2 / 2;
     const pool = agents.filter(a => avail2(a, h2));
 
-    if (!pool.length) {
-      h2++;
-      continue;
-    }
-
-    // Find how long this pool stays the same
-    let reach = h2 + 1;
-    while (reach < E2) {
-      const next = agents.filter(a => avail2(a, reach));
-      if (next.length !== pool.length || next.some((a, i) => a.name !== pool[i].name)) break;
-      reach++;
-    }
-
-    const blockStart = h2 / 2;
-    const blockEnd = Math.min(reach, E2) / 2;
-
-    // Same split that used to divide agents across HubSpot / Hub & CS Slack /
-    // Nash — keep only whoever would have landed on HubSpot under that split,
-    // so the same agent(s) stay consistently on it instead of everyone piling
-    // on together and reshuffling every time the pool changes.
-    const OLD_SLOT_COUNT = 3;
-    if (pool.length <= 2) {
-      // 1 or 2 agents: the earliest-starting agent (pool[0]) owned HubSpot
-      taskBlocks[0].push({ name: pool[0].name, start: blockStart, end: blockEnd });
-    } else {
-      pool.forEach((agent, pi) => {
-        if (pi % OLD_SLOT_COUNT === 0) {
-          taskBlocks[0].push({ name: agent.name, start: blockStart, end: blockEnd });
-        }
-      });
-    }
-
-    h2 = reach;
-  }
-
-  // Merge consecutive blocks with the same agent into one uninterrupted bar
-  return TASKS.map((task, ti) => {
-    const raw = taskBlocks[ti];
-    const merged = [];
-    raw.forEach(block => {
-      const last = merged[merged.length - 1];
-      if (last && last.name === block.name && last.end === block.start) {
-        last.end = block.end;
+    let owner = null;
+    if (pool.length) {
+      if (currentOwner && pool.some(a => a.name === currentOwner)) {
+        owner = currentOwner;
       } else {
-        merged.push({ ...block });
+        const prevIdx = currentOwner ? agents.findIndex(a => a.name === currentOwner) : -1;
+        const rotated = [...agents.slice(prevIdx + 1), ...agents.slice(0, prevIdx + 1)];
+        owner = rotated.find(a => pool.some(p => p.name === a.name)).name;
       }
-    });
-    return { task, blocks: merged };
-  });
+    }
+
+    if (owner !== currentOwner) {
+      if (currentOwner !== null) blocks.push({ name: currentOwner, start: blockStart, end: t });
+      blockStart = t;
+      currentOwner = owner;
+    }
+  }
+  if (currentOwner !== null) blocks.push({ name: currentOwner, start: blockStart, end: E });
+
+  return TASKS.map(task => ({ task, blocks }));
 }
 
 // ── SLACK BRIEF GENERATOR ────────────────────────────────────────────
