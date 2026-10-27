@@ -352,8 +352,8 @@ function isOnHoliday(agentName, dateStr, holidays) {
 
 const NAMES  = { D: "Danica", A: "Angela", K: "Kylene", H: "Harvey", S: "Sophia", R: "Ross" };
 const COLORS = { Danica: "#8B1C3C", Angela: "#C4622D", Kylene: "#6B7C3A", Harvey: "#4A6FA5", Sophia: "#7C3A6B", Ross: "#2C6B5A" };
-const TASKS  = ["HubSpot", "Hub & CS Slack", "Nash"];
-const TCOLS  = { "HubSpot": "#8B1C3C", "Hub & CS Slack": "#4A6B3A", "Nash": "#C4622D" };
+const TASKS  = ["HubSpot"];
+const TCOLS  = { "HubSpot": "#8B1C3C" };
 
 // Timeline constants — work in half-hour units throughout
 const S = 9, E = 23, SPAN = E - S;
@@ -476,7 +476,7 @@ function getOnHoliday(day, holidays = []) {
 // ── TASK ASSIGNMENT ──────────────────────────────────────────────────
 // Works in half-hour units. Distributes tasks across available agents
 // so no one is idle — each agent gets a primary task responsibility.
-// Tasks: HubSpot=0, Hub & CS Slack=1, Nash=2
+// Single task: HubSpot
 
 function avail2(agent, h2) {
   const s2 = agent.start * 2;
@@ -514,28 +514,10 @@ function assignTasks(agents) {
     const blockStart = h2 / 2;
     const blockEnd = Math.min(reach, E2) / 2;
 
-    // Distribute tasks among available agents round-robin
-    // With 1 agent: all 3 tasks
-    // With 2 agents: agent0=HubSpot+Hub&CS, agent1=Nash
-    // With 3+ agents: one task each
-    if (pool.length === 1) {
-      TASKS.forEach((_, ti) => {
-        taskBlocks[ti].push({ name: pool[0].name, start: blockStart, end: blockEnd });
-      });
-    } else if (pool.length === 2) {
-      // Agent 0: HubSpot (most important)
-      taskBlocks[0].push({ name: pool[0].name, start: blockStart, end: blockEnd });
-      // Agent 1: Nash + Hub & CS Slack
-      taskBlocks[1].push({ name: pool[1].name, start: blockStart, end: blockEnd });
-      taskBlocks[2].push({ name: pool[1].name, start: blockStart, end: blockEnd });
-    } else {
-      // 3+ agents: one task each; any extra agents beyond TASKS.length are
-      // paired onto an existing task (round-robin) so no one is left idle
-      pool.forEach((agent, pi) => {
-        const ti = pi % TASKS.length;
-        taskBlocks[ti].push({ name: agent.name, start: blockStart, end: blockEnd });
-      });
-    }
+    // Single task: every available agent works it concurrently
+    pool.forEach(agent => {
+      taskBlocks[0].push({ name: agent.name, start: blockStart, end: blockEnd });
+    });
 
     h2 = reach;
   }
@@ -919,8 +901,8 @@ export default function App() {
             {onHoliday.includes("Sophia")
               ? <Block left={pct(S)} width={wpct(S,E)} bg="#F5D5DC" border="#D4A0A8" label="🏖 On holiday" labelColor="#8B1C3C" dashed />
               : <>
-                  <Block left={pct(9)}  width={wpct(9,12)}  bg="#E8D9CC" border="#6B4C3B" label="All tasks"       labelColor="#6B4C3B" />
-                  <Block left={pct(12)} width={wpct(12,17)} bg="#EDE0D4" border="#9B7E6E" label="Partner Queries" labelColor="#9B7E6E" />
+                  <Block left={pct(9)}  width={wpct(9,13)}  bg="#E8D9CC" border="#6B4C3B" label="All tasks"       labelColor="#6B4C3B" />
+                  <Block left={pct(13)} width={wpct(13,17)} bg="#EDE0D4" border="#9B7E6E" label="Partner Queries" labelColor="#9B7E6E" />
                 </>
             }
           </Row>
@@ -931,7 +913,7 @@ export default function App() {
         {rows.map(({ task, blocks }) => (
           <Row key={task} label={task} color={TCOLS[task]}>
             {weekday && !onHoliday.includes("Sophia") && (
-              <Block left={pct(9)} width={wpct(9, 12)}
+              <Block left={pct(9)} width={wpct(9, 13)}
                 bg={TCOLS[task] + "20"} border={TCOLS[task] + "55"}
                 label="Sophia" labelColor="#6B4C3B" />
             )}
