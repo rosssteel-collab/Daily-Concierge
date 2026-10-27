@@ -514,10 +514,21 @@ function assignTasks(agents) {
     const blockStart = h2 / 2;
     const blockEnd = Math.min(reach, E2) / 2;
 
-    // Single task: every available agent works it concurrently
-    pool.forEach(agent => {
-      taskBlocks[0].push({ name: agent.name, start: blockStart, end: blockEnd });
-    });
+    // Same split that used to divide agents across HubSpot / Hub & CS Slack /
+    // Nash — keep only whoever would have landed on HubSpot under that split,
+    // so the same agent(s) stay consistently on it instead of everyone piling
+    // on together and reshuffling every time the pool changes.
+    const OLD_SLOT_COUNT = 3;
+    if (pool.length <= 2) {
+      // 1 or 2 agents: the earliest-starting agent (pool[0]) owned HubSpot
+      taskBlocks[0].push({ name: pool[0].name, start: blockStart, end: blockEnd });
+    } else {
+      pool.forEach((agent, pi) => {
+        if (pi % OLD_SLOT_COUNT === 0) {
+          taskBlocks[0].push({ name: agent.name, start: blockStart, end: blockEnd });
+        }
+      });
+    }
 
     h2 = reach;
   }
