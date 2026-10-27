@@ -371,6 +371,16 @@ function isUKOnlyCoverDay(dateStr) {
   return iso >= "2026-11-16";
 }
 
+// Sophia's handover from "All tasks" to "Partner Queries" (and her HubSpot
+// cover window) was 12:00 right up until the w/c 16 Nov 2026 schedule change,
+// when it moved to 13:00 to match the later PH shift start (13:00–22:00).
+function sophiaHandoverHour(dateStr) {
+  const { day, month } = parseDate(dateStr);
+  const yearGuess = month >= 6 ? 2026 : 2027;
+  const iso = `${yearGuess}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+  return iso >= "2026-11-16" ? 13 : 12;
+}
+
 // Format hour — handles half hours e.g. 16.5 → "16:30"
 const fmt = h => `${String(Math.floor(h)).padStart(2,"0")}:${h % 1 === 0.5 ? "30" : "00"}`;
 
@@ -621,6 +631,7 @@ export default function App() {
   const agents  = getAgents(day, holidays);
   const rows    = assignTasks(agents);
   const weekday = isWD(day.date);
+  const sophiaEnd = sophiaHandoverHour(day.date);
   const warn    = agents.length < (weekday ? 1 : 2) && !isUKOnlyCoverDay(day.date);
   const onHoliday = getOnHoliday(day, holidays);
   const slack   = buildSlack(day, agents, weekday, onHoliday);
@@ -860,7 +871,11 @@ export default function App() {
       </div>
 
       {/* Timeline */}
-      <div style={{ marginBottom: 20 }}>
+      <div style={{ marginBottom: 20, overflowX: "auto" }}>
+        {/* Min-width wrapper keeps the hour axis legible and block widths
+            accurate on narrow screens — scroll horizontally instead of
+            squashing everything into an unreadable sliver. */}
+        <div style={{ minWidth: 640 }}>
 
         {/* Hour axis — full and half hours */}
         <div style={{ display: "flex", paddingLeft: 112, marginBottom: 4, position: "relative" }}>
@@ -889,8 +904,8 @@ export default function App() {
             {onHoliday.includes("Sophia")
               ? <Block left={pct(S)} width={wpct(S,E)} bg="#F5D5DC" border="#D4A0A8" label="🏖 On holiday" labelColor="#8B1C3C" dashed />
               : <>
-                  <Block left={pct(9)}  width={wpct(9,13)}  bg="#E8D9CC" border="#6B4C3B" label="All tasks"       labelColor="#6B4C3B" />
-                  <Block left={pct(13)} width={wpct(13,17)} bg="#EDE0D4" border="#9B7E6E" label="Partner Queries" labelColor="#9B7E6E" />
+                  <Block left={pct(9)}  width={wpct(9,sophiaEnd)}  bg="#E8D9CC" border="#6B4C3B" label="All tasks"       labelColor="#6B4C3B" />
+                  <Block left={pct(sophiaEnd)} width={wpct(sophiaEnd,17)} bg="#EDE0D4" border="#9B7E6E" label="Partner Queries" labelColor="#9B7E6E" />
                 </>
             }
           </Row>
@@ -901,7 +916,7 @@ export default function App() {
         {rows.map(({ task, blocks }) => (
           <Row key={task} label={task} color={TCOLS[task]}>
             {weekday && !onHoliday.includes("Sophia") && (
-              <Block left={pct(9)} width={wpct(9, 13)}
+              <Block left={pct(9)} width={wpct(9, sophiaEnd)}
                 bg={TCOLS[task] + "20"} border={TCOLS[task] + "55"}
                 label="Sophia" labelColor="#6B4C3B" />
             )}
@@ -957,6 +972,7 @@ export default function App() {
             </Row>
           ));
         })()}
+        </div>
       </div>
 
       {/* Legend */}
