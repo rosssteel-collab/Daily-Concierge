@@ -821,7 +821,7 @@ export default function App() {
       </div>
 
       {/* Rota not yet published notice */}
-      {agents.length === 0 && (
+      {agents.length === 0 && !isUKOnlyCoverDay(day.date) && (
         <div style={{
           background: "#EDE0D4", border: "1px solid #D4B8A8",
           borderRadius: 8, padding: "10px 14px", marginBottom: 16,
