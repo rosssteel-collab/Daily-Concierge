@@ -920,6 +920,13 @@ export default function App() {
                 bg={TCOLS[task] + "20"} border={TCOLS[task] + "55"}
                 label="Sophia" labelColor="#6B4C3B" />
             )}
+            {/* Mondays have no PH agents on shift — Ross covers the rest of
+                the day on HubSpot once Sophia hands over to Partner Queries. */}
+            {weekday && isUKOnlyCoverDay(day.date) && !onHoliday.includes("Ross") && (
+              <Block left={pct(sophiaEnd)} width={wpct(sophiaEnd, 17)}
+                bg={TCOLS[task] + "20"} border={TCOLS[task] + "55"}
+                label="Ross" labelColor={COLORS.Ross} />
+            )}
             {blocks.map((b, i) => {
               // Split width evenly when multiple agents share the exact same
               // time range on this task (happens when 4+ agents overlap)
