@@ -328,6 +328,7 @@ const DEFAULT_HOLIDAYS = [
   { agent: "Sophia", from: "2026-10-16", to: "2026-10-16" },
   { agent: "Sophia", from: "2026-10-23", to: "2026-10-23" },
   { agent: "Ross", from: "2026-11-20", to: "2026-11-26" },
+  { agent: "Angela", from: "2026-11-26", to: "2026-11-27" },
 ];
 
 // Check if an agent is on holiday on a given date string (e.g. "Mon 15/6")
