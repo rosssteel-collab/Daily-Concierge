@@ -247,7 +247,7 @@ const MONTHS = [
       { date: "Wed 18/11", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Thu 19/11", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Fri 20/11", D: null, A: [13,22], K: null, H: [13,22] },
-      { date: "Sat 21/11", D: null, A: [13,22], K: null, H: [13,22] },
+      { date: "Sat 21/11", D: null, A: [9,18],  K: null, H: [13,22] },
       { date: "Sun 22/11", D: null, A: null,    K: null, H: null    },
     ]},
     { label: "Week 4", dates: "23–29 Nov", days: [
@@ -256,7 +256,7 @@ const MONTHS = [
       { date: "Wed 25/11", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Thu 26/11", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Fri 27/11", D: null, A: [13,22], K: null, H: [13,22] },
-      { date: "Sat 28/11", D: null, A: [13,22], K: null, H: [13,22] },
+      { date: "Sat 28/11", D: null, A: [13,22], K: null, H: [9,18]  },
       { date: "Sun 29/11", D: null, A: null,    K: null, H: null    },
     ]},
   ]},
@@ -269,7 +269,7 @@ const MONTHS = [
       { date: "Wed 2/12",  D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Thu 3/12",  D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Fri 4/12",  D: null, A: [13,22], K: null, H: [13,22] },
-      { date: "Sat 5/12",  D: null, A: [13,22], K: null, H: [13,22] },
+      { date: "Sat 5/12",  D: null, A: [9,18],  K: null, H: [13,22] },
       { date: "Sun 6/12",  D: null, A: null,    K: null, H: null    },
     ]},
     { label: "Week 2", dates: "7–13 Dec", days: [
@@ -278,7 +278,7 @@ const MONTHS = [
       { date: "Wed 9/12",  D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Thu 10/12", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Fri 11/12", D: null, A: [13,22], K: null, H: [13,22] },
-      { date: "Sat 12/12", D: null, A: [13,22], K: null, H: [13,22] },
+      { date: "Sat 12/12", D: null, A: [13,22], K: null, H: [9,18]  },
       { date: "Sun 13/12", D: null, A: null,    K: null, H: null    },
     ]},
     { label: "Week 3", dates: "14–20 Dec", days: [
@@ -287,7 +287,7 @@ const MONTHS = [
       { date: "Wed 16/12", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Thu 17/12", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Fri 18/12", D: null, A: [13,22], K: null, H: [13,22] },
-      { date: "Sat 19/12", D: null, A: [13,22], K: null, H: [13,22] },
+      { date: "Sat 19/12", D: null, A: [9,18],  K: null, H: [13,22] },
       { date: "Sun 20/12", D: null, A: null,    K: null, H: null    },
     ]},
     { label: "Week 4", dates: "21–27 Dec", days: [
@@ -296,7 +296,7 @@ const MONTHS = [
       { date: "Wed 23/12", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Thu 24/12", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Fri 25/12", D: null, A: [13,22], K: null, H: [13,22] },
-      { date: "Sat 26/12", D: null, A: [13,22], K: null, H: [13,22] },
+      { date: "Sat 26/12", D: null, A: [13,22], K: null, H: [9,18]  },
       { date: "Sun 27/12", D: null, A: null,    K: null, H: null    },
     ]},
     { label: "Week 5", dates: "28 Dec–3 Jan", days: [
@@ -305,7 +305,7 @@ const MONTHS = [
       { date: "Wed 30/12", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Thu 31/12", D: null, A: [13,22], K: null, H: [13,22] },
       { date: "Fri 1/1",   D: null, A: [13,22], K: null, H: [13,22] },
-      { date: "Sat 2/1",   D: null, A: [13,22], K: null, H: [13,22] },
+      { date: "Sat 2/1",   D: null, A: [9,18],  K: null, H: [13,22] },
       { date: "Sun 3/1",   D: null, A: null,    K: null, H: null    },
     ]},
   ]},
